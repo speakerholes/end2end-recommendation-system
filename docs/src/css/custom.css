@@ -1,0 +1,85 @@
+:root {
+  --ifm-color-primary: #1f7a72;
+  --ifm-color-primary-dark: #1b6c65;
+  --ifm-color-primary-darker: #196660;
+  --ifm-color-primary-darkest: #14544f;
+  --ifm-color-primary-light: #23887f;
+  --ifm-color-primary-lighter: #258e85;
+  --ifm-color-primary-lightest: #2ba399;
+  --ifm-background-color: #fbf9f3;
+  --ifm-font-family-base: "Georgia", "Iowan Old Style", "Palatino Linotype", serif;
+  --ifm-font-family-monospace: "SFMono-Regular", "Menlo", "Monaco", monospace;
+  --ifm-heading-font-family: "Helvetica Neue", "Avenir Next", "Segoe UI", sans-serif;
+  --ifm-code-font-size: 95%;
+  --ifm-navbar-background-color: rgba(251, 249, 243, 0.86);
+  --ifm-navbar-shadow: 0 1px 0 rgba(23, 32, 51, 0.08);
+  --ifm-footer-background-color: #172033;
+  --ifm-global-radius: 18px;
+  --ifm-h1-font-size: 3rem;
+  --ifm-h2-font-size: 2rem;
+  --ifm-h3-font-size: 1.4rem;
+  --ifm-leading: 1.75;
+}
+
+[data-theme="dark"] {
+  --ifm-background-color: #101723;
+  --ifm-font-color-base: #f5f7fa;
+  --ifm-navbar-background-color: rgba(16, 23, 35, 0.92);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(255, 159, 28, 0.08), transparent 22%),
+    var(--ifm-background-color);
+}
+
+.navbar {
+  backdrop-filter: blur(18px);
+}
+
+.navbar__title,
+.hero__title,
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.theme-doc-markdown {
+  font-size: 1.02rem;
+}
+
+.theme-doc-markdown h1 {
+  margin-bottom: 1rem;
+}
+
+.theme-doc-markdown blockquote {
+  background: rgba(31, 122, 114, 0.08);
+  border-left: 4px solid var(--ifm-color-primary);
+  border-radius: 0 14px 14px 0;
+  padding: 1rem 1.2rem;
+}
+
+.theme-doc-markdown table {
+  display: table;
+  width: 100%;
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid rgba(23, 32, 51, 0.08);
+}
+
+.card {
+  border-radius: 20px;
+}
+
+.pagination-nav__link {
+  border-radius: 20px;
+}

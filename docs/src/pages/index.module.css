@@ -1,0 +1,156 @@
+.page {
+  background:
+    radial-gradient(circle at top left, rgba(255, 159, 28, 0.16), transparent 32%),
+    radial-gradient(circle at top right, rgba(46, 196, 182, 0.18), transparent 28%),
+    linear-gradient(180deg, #f8f4ec 0%, #f4efe5 52%, #fbf9f3 100%);
+  min-height: 100vh;
+}
+
+.hero {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.9fr);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 4rem;
+}
+
+.heroCopy h1 {
+  color: #172033;
+  font-size: clamp(3rem, 5vw, 5.2rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  max-width: 10ch;
+  margin: 0 0 1.25rem;
+}
+
+.kicker {
+  color: #a54f14;
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.summary {
+  color: #344054;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  max-width: 60ch;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.ghostButton {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(23, 32, 51, 0.12);
+  color: #172033;
+}
+
+.heroPanel {
+  align-self: center;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 28px;
+  box-shadow: 0 30px 60px rgba(23, 32, 51, 0.12);
+  overflow: hidden;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.panelGlow {
+  background: linear-gradient(135deg, rgba(46, 196, 182, 0.35), rgba(255, 159, 28, 0.4));
+  border-radius: 999px;
+  filter: blur(18px);
+  height: 160px;
+  opacity: 0.9;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 160px;
+}
+
+.metricCard,
+.roadmapCard {
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 20px;
+  padding: 1.25rem;
+  position: relative;
+}
+
+.metricCard {
+  margin-bottom: 1rem;
+}
+
+.metricCard span,
+.roadmapCard p {
+  color: #667085;
+  display: block;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.metricCard strong {
+  color: #172033;
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.roadmapCard ul {
+  color: #172033;
+  margin: 0;
+  padding-left: 1.15rem;
+}
+
+.roadmapCard li + li {
+  margin-top: 0.55rem;
+}
+
+.pillars {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.pillarCard {
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(23, 32, 51, 0.08);
+  border-radius: 24px;
+  box-shadow: 0 18px 40px rgba(23, 32, 51, 0.08);
+  padding: 1.5rem;
+}
+
+.pillarCard h2 {
+  color: #172033;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.pillarCard p {
+  color: #475467;
+  margin: 0;
+}
+
+@media (max-width: 996px) {
+  .hero,
+  .pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCopy h1 {
+    max-width: 12ch;
+  }
+}
