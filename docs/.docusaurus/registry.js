@@ -1,5 +1,4 @@
 export default {
-  "0162927a": [() => import(/* webpackChunkName: "0162927a" */ "@generated/docusaurus-plugin-content-docs/default/p/guide-68f.json"), "@generated/docusaurus-plugin-content-docs/default/p/guide-68f.json", require.resolveWeak("@generated/docusaurus-plugin-content-docs/default/p/guide-68f.json")],
   "12532f9a": [() => import(/* webpackChunkName: "12532f9a" */ "@site/content/understanding-the-data/quality-checks.md"), "@site/content/understanding-the-data/quality-checks.md", require.resolveWeak("@site/content/understanding-the-data/quality-checks.md")],
   "17896441": [() => import(/* webpackChunkName: "17896441" */ "@theme/DocItem"), "@theme/DocItem", require.resolveWeak("@theme/DocItem")],
   "1df93b7f": [() => import(/* webpackChunkName: "1df93b7f" */ "@site/src/pages/index.tsx"), "@site/src/pages/index.tsx", require.resolveWeak("@site/src/pages/index.tsx")],
@@ -9,6 +8,7 @@ export default {
   "a7456010": [() => import(/* webpackChunkName: "a7456010" */ "@generated/docusaurus-plugin-content-pages/default/__plugin.json"), "@generated/docusaurus-plugin-content-pages/default/__plugin.json", require.resolveWeak("@generated/docusaurus-plugin-content-pages/default/__plugin.json")],
   "a7bd4aaa": [() => import(/* webpackChunkName: "a7bd4aaa" */ "@theme/DocVersionRoot"), "@theme/DocVersionRoot", require.resolveWeak("@theme/DocVersionRoot")],
   "a94703ab": [() => import(/* webpackChunkName: "a94703ab" */ "@theme/DocRoot"), "@theme/DocRoot", require.resolveWeak("@theme/DocRoot")],
+  "a9ad45fe": [() => import(/* webpackChunkName: "a9ad45fe" */ "@generated/docusaurus-plugin-content-docs/default/p/end-2-end-recommendation-system-guide-536.json"), "@generated/docusaurus-plugin-content-docs/default/p/end-2-end-recommendation-system-guide-536.json", require.resolveWeak("@generated/docusaurus-plugin-content-docs/default/p/end-2-end-recommendation-system-guide-536.json")],
   "aba21aa0": [() => import(/* webpackChunkName: "aba21aa0" */ "@generated/docusaurus-plugin-content-docs/default/__plugin.json"), "@generated/docusaurus-plugin-content-docs/default/__plugin.json", require.resolveWeak("@generated/docusaurus-plugin-content-docs/default/__plugin.json")],
   "d7d0ccb6": [() => import(/* webpackChunkName: "d7d0ccb6" */ "@site/content/understanding-the-data/schema-and-granularity.md"), "@site/content/understanding-the-data/schema-and-granularity.md", require.resolveWeak("@site/content/understanding-the-data/schema-and-granularity.md")],
   "f99598c9": [() => import(/* webpackChunkName: "f99598c9" */ "@site/content/understanding-the-data/overview.md"), "@site/content/understanding-the-data/overview.md", require.resolveWeak("@site/content/understanding-the-data/overview.md")],};

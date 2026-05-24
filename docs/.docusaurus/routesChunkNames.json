@@ -1,34 +1,34 @@
 {
-  "/guide-a20": {
+  "/end2end-recommendation-system/guide-de3": {
     "__comp": "5e95c892",
     "__context": {
       "plugin": "aba21aa0"
     }
   },
-  "/guide-337": {
+  "/end2end-recommendation-system/guide-0cd": {
     "__comp": "a7bd4aaa",
-    "__props": "0162927a"
+    "__props": "a9ad45fe"
   },
-  "/guide-363": {
+  "/end2end-recommendation-system/guide-88a": {
     "__comp": "a94703ab"
   },
-  "/guide/understanding-the-data/overview-f42": {
+  "/end2end-recommendation-system/guide/understanding-the-data/overview-120": {
     "__comp": "17896441",
     "content": "f99598c9"
   },
-  "/guide/understanding-the-data/quality-checks-547": {
+  "/end2end-recommendation-system/guide/understanding-the-data/quality-checks-0c2": {
     "__comp": "17896441",
     "content": "12532f9a"
   },
-  "/guide/understanding-the-data/schema-and-granularity-555": {
+  "/end2end-recommendation-system/guide/understanding-the-data/schema-and-granularity-5cf": {
     "__comp": "17896441",
     "content": "d7d0ccb6"
   },
-  "/guide/understanding-the-data/source-assets-ff3": {
+  "/end2end-recommendation-system/guide/understanding-the-data/source-assets-d24": {
     "__comp": "17896441",
     "content": "2e0177ee"
   },
-  "/-e5f": {
+  "/end2end-recommendation-system/-a0c": {
     "__comp": "1df93b7f",
     "__context": {
       "plugin": "a7456010"

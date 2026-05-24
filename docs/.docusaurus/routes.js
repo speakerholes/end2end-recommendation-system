@@ -3,38 +3,38 @@ import ComponentCreator from '@docusaurus/ComponentCreator';
 
 export default [
   {
-    path: '/guide',
-    component: ComponentCreator('/guide', 'a20'),
+    path: '/end2end-recommendation-system/guide',
+    component: ComponentCreator('/end2end-recommendation-system/guide', 'de3'),
     routes: [
       {
-        path: '/guide',
-        component: ComponentCreator('/guide', '337'),
+        path: '/end2end-recommendation-system/guide',
+        component: ComponentCreator('/end2end-recommendation-system/guide', '0cd'),
         routes: [
           {
-            path: '/guide',
-            component: ComponentCreator('/guide', '363'),
+            path: '/end2end-recommendation-system/guide',
+            component: ComponentCreator('/end2end-recommendation-system/guide', '88a'),
             routes: [
               {
-                path: '/guide/understanding-the-data/overview',
-                component: ComponentCreator('/guide/understanding-the-data/overview', 'f42'),
+                path: '/end2end-recommendation-system/guide/understanding-the-data/overview',
+                component: ComponentCreator('/end2end-recommendation-system/guide/understanding-the-data/overview', '120'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/guide/understanding-the-data/quality-checks',
-                component: ComponentCreator('/guide/understanding-the-data/quality-checks', '547'),
+                path: '/end2end-recommendation-system/guide/understanding-the-data/quality-checks',
+                component: ComponentCreator('/end2end-recommendation-system/guide/understanding-the-data/quality-checks', '0c2'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/guide/understanding-the-data/schema-and-granularity',
-                component: ComponentCreator('/guide/understanding-the-data/schema-and-granularity', '555'),
+                path: '/end2end-recommendation-system/guide/understanding-the-data/schema-and-granularity',
+                component: ComponentCreator('/end2end-recommendation-system/guide/understanding-the-data/schema-and-granularity', '5cf'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               },
               {
-                path: '/guide/understanding-the-data/source-assets',
-                component: ComponentCreator('/guide/understanding-the-data/source-assets', 'ff3'),
+                path: '/end2end-recommendation-system/guide/understanding-the-data/source-assets',
+                component: ComponentCreator('/end2end-recommendation-system/guide/understanding-the-data/source-assets', 'd24'),
                 exact: true,
                 sidebar: "tutorialSidebar"
               }
@@ -45,8 +45,8 @@ export default [
     ]
   },
   {
-    path: '/',
-    component: ComponentCreator('/', 'e5f'),
+    path: '/end2end-recommendation-system/',
+    component: ComponentCreator('/end2end-recommendation-system/', 'a0c'),
     exact: true
   },
   {

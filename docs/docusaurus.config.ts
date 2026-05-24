@@ -12,8 +12,8 @@ const config: Config = {
     faster: false
   },
 
-  url: "https://example.com",
-  baseUrl: "/",
+  url: "https://nickward.github.io",
+  baseUrl: "/end2end-recommendation-system/",
 
   organizationName: "nickward",
   projectName: "end2end-recommendation-system",

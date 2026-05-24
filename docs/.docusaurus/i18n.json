@@ -13,8 +13,8 @@
       "calendar": "gregory",
       "path": "en",
       "translate": false,
-      "url": "https://example.com",
-      "baseUrl": "/"
+      "url": "https://nickward.github.io",
+      "baseUrl": "/end2end-recommendation-system/"
     }
   }
 }

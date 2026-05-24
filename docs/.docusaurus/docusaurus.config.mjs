@@ -29,8 +29,8 @@ export default {
     "experimental_vcs": {},
     "experimental_router": "browser"
   },
-  "url": "https://example.com",
-  "baseUrl": "/",
+  "url": "https://nickward.github.io",
+  "baseUrl": "/end2end-recommendation-system/",
   "organizationName": "nickward",
   "projectName": "end2end-recommendation-system",
   "onBrokenLinks": "throw",
