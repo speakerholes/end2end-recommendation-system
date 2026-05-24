@@ -1,0 +1,48 @@
+{
+  "docusaurus-plugin-content-docs": {
+    "default": {
+      "path": "/guide",
+      "versions": [
+        {
+          "name": "current",
+          "label": "Next",
+          "isLast": true,
+          "path": "/guide",
+          "mainDocId": "understanding-the-data/overview",
+          "docs": [
+            {
+              "id": "understanding-the-data/overview",
+              "path": "/guide/understanding-the-data/overview",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "understanding-the-data/quality-checks",
+              "path": "/guide/understanding-the-data/quality-checks",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "understanding-the-data/schema-and-granularity",
+              "path": "/guide/understanding-the-data/schema-and-granularity",
+              "sidebar": "tutorialSidebar"
+            },
+            {
+              "id": "understanding-the-data/source-assets",
+              "path": "/guide/understanding-the-data/source-assets",
+              "sidebar": "tutorialSidebar"
+            }
+          ],
+          "draftIds": [],
+          "sidebars": {
+            "tutorialSidebar": {
+              "link": {
+                "path": "/guide/understanding-the-data/overview",
+                "label": "Understanding the Data"
+              }
+            }
+          }
+        }
+      ],
+      "breadcrumbs": true
+    }
+  }
+}

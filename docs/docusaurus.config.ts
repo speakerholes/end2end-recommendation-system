@@ -8,7 +8,8 @@ const config: Config = {
   favicon: "img/recsys-mark.svg",
 
   future: {
-    v4: true
+    v4: true,
+    faster: false
   },
 
   url: "https://example.com",
@@ -18,7 +19,11 @@ const config: Config = {
   projectName: "end2end-recommendation-system",
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "warn"
+    }
+  },
 
   i18n: {
     defaultLocale: "en",
@@ -36,7 +41,7 @@ const config: Config = {
           breadcrumbs: true
         },
         blog: false,
-        pages: true,
+        pages: {},
         theme: {
           customCss: "./src/css/custom.css"
         }

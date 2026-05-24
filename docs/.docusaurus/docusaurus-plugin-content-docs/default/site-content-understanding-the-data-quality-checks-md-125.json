@@ -1,0 +1,22 @@
+{
+  "id": "understanding-the-data/quality-checks",
+  "title": "Quality Checks",
+  "description": "Data validation work that should happen before recommender modeling.",
+  "source": "@site/content/understanding-the-data/quality-checks.md",
+  "sourceDirName": "understanding-the-data",
+  "slug": "/understanding-the-data/quality-checks",
+  "permalink": "/guide/understanding-the-data/quality-checks",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Quality Checks",
+    "description": "Data validation work that should happen before recommender modeling."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Schema and Granularity",
+    "permalink": "/guide/understanding-the-data/schema-and-granularity"
+  }
+}

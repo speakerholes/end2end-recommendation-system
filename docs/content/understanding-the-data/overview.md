@@ -7,7 +7,7 @@ description: Why the data section comes first in an end-to-end recommendation sy
 
 This documentation starts with the data because recommendation quality is constrained by what the system can actually observe. Before retrieval models, embeddings, and serving strategies, you need to understand what counts as a user event, what identifies an item, and how reliably review data can be joined with product metadata.
 
-The current codebase already reflects that priority. In [data.py](/Users/nickward/Desktop/end2end-recommendation-system/src/end2end_recommendation_system/data.py), the project focuses on acquiring and loading the Amazon Reviews 2023 dataset from the McAuley Lab release on Hugging Face, then normalizing it into local Parquet assets for downstream analysis.
+The current codebase already reflects that priority. In `src/end2end_recommendation_system/data.py`, the project focuses on acquiring and loading the Amazon Reviews 2023 dataset from the McAuley Lab release on Hugging Face, then normalizing it into local Parquet assets for downstream analysis.
 
 ## Why this section exists
 

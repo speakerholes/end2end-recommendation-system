@@ -1,0 +1,26 @@
+{
+  "id": "understanding-the-data/source-assets",
+  "title": "Source Assets",
+  "description": "The review and metadata assets already modeled in the codebase.",
+  "source": "@site/content/understanding-the-data/source-assets.md",
+  "sourceDirName": "understanding-the-data",
+  "slug": "/understanding-the-data/source-assets",
+  "permalink": "/guide/understanding-the-data/source-assets",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Source Assets",
+    "description": "The review and metadata assets already modeled in the codebase."
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Overview",
+    "permalink": "/guide/understanding-the-data/overview"
+  },
+  "next": {
+    "title": "Schema and Granularity",
+    "permalink": "/guide/understanding-the-data/schema-and-granularity"
+  }
+}

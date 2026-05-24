@@ -1,0 +1,22 @@
+{
+  "id": "understanding-the-data/overview",
+  "title": "Overview",
+  "description": "Why the data section comes first in an end-to-end recommendation system build.",
+  "source": "@site/content/understanding-the-data/overview.md",
+  "sourceDirName": "understanding-the-data",
+  "slug": "/understanding-the-data/overview",
+  "permalink": "/guide/understanding-the-data/overview",
+  "draft": false,
+  "unlisted": false,
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "title": "Overview",
+    "description": "Why the data section comes first in an end-to-end recommendation system build."
+  },
+  "sidebar": "tutorialSidebar",
+  "next": {
+    "title": "Overview",
+    "permalink": "/guide/understanding-the-data/overview"
+  }
+}
