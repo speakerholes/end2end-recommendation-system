@@ -1,22 +1,16 @@
-from __future__ import annotations
-
-import logging
-from enum import Enum
 from pathlib import Path
-from typing import Sequence
 
 import pandas as pd
 from datasets import load_dataset
 from pandas import DataFrame
 
 
-logger = logging.getLogger(__name__)
-
-
 HF_DATASET_REPO = "McAuley-Lab/Amazon-Reviews-2023"
 HF_DATASET_BASE_PATH = f"hf://datasets/{HF_DATASET_REPO}"
-DEFAULT_OUTPUT_DIR = Path("data/raw/amazon_reviews_2023")
 HF_SPLIT_NAME = "full"
+
+DEFAULT_REVIEWS_DIR = Path("data/raw/reviews")
+DEFAULT_METADATA_DIR = Path("data/raw/metadata")
 
 
 AMAZON_CATEGORIES = {
@@ -57,32 +51,13 @@ AMAZON_CATEGORIES = {
 }
 
 
-class DataType(str, Enum):
-    REVIEWS = "reviews"
-    METADATA = "metadata"
-
-
-def download_data(
-    categories: Sequence[str],
-    output_dir: str | Path = DEFAULT_OUTPUT_DIR,
-    data_type: DataType = DataType.REVIEWS,
+def download_review_data(
+    categories: list[str],
+    output_dir: str | Path = DEFAULT_REVIEWS_DIR,
     overwrite: bool = False,
 ) -> list[Path]:
     """
-    Download Amazon Reviews 2023 category files from Hugging Face and save them as Parquet.
-
-    Args:
-        categories:
-            Amazon product categories to download.
-        output_dir:
-            Directory where Parquet files will be saved.
-        data_type:
-            Whether to download review interactions or item metadata.
-        overwrite:
-            If False, skip files that already exist locally.
-
-    Returns:
-        List of local Parquet file paths.
+    Download Amazon Reviews 2023 review JSONL files and save them as Parquet.
     """
     validate_categories(categories)
 
@@ -92,115 +67,159 @@ def download_data(
     saved_paths: list[Path] = []
 
     for category in categories:
-        parquet_path = get_local_parquet_path(
-            category=category,
-            output_dir=output_path,
-            data_type=data_type,
-        )
+        parquet_path = get_review_parquet_path(category, output_path)
 
         if parquet_path.exists() and not overwrite:
-            logger.info("Skipping %s because it already exists: %s", category, parquet_path)
+            print(f"Skipping {category}; already exists at {parquet_path}")
             saved_paths.append(parquet_path)
             continue
 
-        remote_path = get_remote_jsonl_path(category=category, data_type=data_type)
-
-        logger.info("Downloading %s %s from %s", category, data_type.value, remote_path)
+        remote_path = get_review_jsonl_path(category)
 
         dataset_dict = load_dataset(
             "json",
             data_files={HF_SPLIT_NAME: remote_path},
         )
 
-        dataset = dataset_dict[HF_SPLIT_NAME]
+        reviews = dataset_dict[HF_SPLIT_NAME]
+        reviews.to_parquet(str(parquet_path))
 
-        logger.info("Saving %s rows to %s", len(dataset), parquet_path)
-
-        dataset.to_parquet(str(parquet_path))
+        print(f"Saved reviews for {category} to {parquet_path}")
         saved_paths.append(parquet_path)
 
     return saved_paths
 
 
-def load_local_data(
-    categories: Sequence[str],
-    data_dir: str | Path = DEFAULT_OUTPUT_DIR,
-    data_type: DataType = DataType.REVIEWS,
-) -> DataFrame:
+def download_metadata(
+    categories: list[str],
+    output_dir: str | Path = DEFAULT_METADATA_DIR,
+    overwrite: bool = False,
+) -> list[Path]:
     """
-    Load one or more locally saved Parquet category files into a single pandas DataFrame.
-
-    Args:
-        categories:
-            Amazon product categories to load.
-        data_dir:
-            Directory containing saved Parquet files.
-        data_type:
-            Whether to load review interactions or item metadata.
-
-    Returns:
-        Combined pandas DataFrame.
+    Download Amazon Reviews 2023 metadata JSONL files and save them as Parquet.
     """
     validate_categories(categories)
 
-    data_path = Path(data_dir)
-    frames: list[DataFrame] = []
+    output_path = Path(output_dir)
+    output_path.mkdir(parents=True, exist_ok=True)
+
+    saved_paths: list[Path] = []
 
     for category in categories:
-        parquet_path = get_local_parquet_path(
-            category=category,
-            output_dir=data_path,
-            data_type=data_type,
+        parquet_path = get_metadata_parquet_path(category, output_path)
+
+        if parquet_path.exists() and not overwrite:
+            print(f"Skipping metadata for {category}; already exists at {parquet_path}")
+            saved_paths.append(parquet_path)
+            continue
+
+        remote_path = get_metadata_jsonl_path(category)
+
+        dataset_dict = load_dataset(
+            "json",
+            data_files={HF_SPLIT_NAME: remote_path},
         )
+
+        metadata = dataset_dict[HF_SPLIT_NAME]
+        metadata.to_parquet(str(parquet_path))
+
+        print(f"Saved metadata for {category} to {parquet_path}")
+        saved_paths.append(parquet_path)
+
+    return saved_paths
+
+
+def load_review_data(
+    categories: list[str],
+    data_dir: str | Path = DEFAULT_REVIEWS_DIR,
+) -> DataFrame:
+    """
+    Load one or more local review Parquet files into a single pandas DataFrame.
+    """
+    validate_categories(categories)
+
+    frames: list[DataFrame] = []
+    data_path = Path(data_dir)
+
+    for category in categories:
+        parquet_path = get_review_parquet_path(category, data_path)
 
         if not parquet_path.exists():
             raise FileNotFoundError(
-                f"Missing local file for category '{category}': {parquet_path}. "
-                "Run download_data(...) first."
+                f"Missing review file for category '{category}': {parquet_path}. "
+                "Run download_review_data(...) first."
             )
 
-        frame = pd.read_parquet(parquet_path)
-        frame["category"] = category
-        frames.append(frame)
+        df = pd.read_parquet(parquet_path)
+        df["category"] = category
+        frames.append(df)
 
-    if not frames:
-        return pd.DataFrame()
-
-    return pd.concat(frames, ignore_index=True)
+    return _concat_frames(frames)
 
 
-def get_remote_jsonl_path(category: str, data_type: DataType) -> str:
+def load_metadata(
+    categories: list[str],
+    data_dir: str | Path = DEFAULT_METADATA_DIR,
+) -> DataFrame:
     """
-    Build the Hugging Face JSONL path for a category and data type.
+    Load one or more local metadata Parquet files into a single pandas DataFrame.
     """
-    if data_type == DataType.REVIEWS:
-        return f"{HF_DATASET_BASE_PATH}/raw/review_categories/{category}.jsonl"
+    validate_categories(categories)
 
-    if data_type == DataType.METADATA:
-        return f"{HF_DATASET_BASE_PATH}/raw/meta_categories/meta_{category}.jsonl"
+    frames: list[DataFrame] = []
+    data_path = Path(data_dir)
 
-    raise ValueError(f"Unsupported data type: {data_type}")
+    for category in categories:
+        parquet_path = get_metadata_parquet_path(category, data_path)
+
+        if not parquet_path.exists():
+            raise FileNotFoundError(
+                f"Missing metadata file for category '{category}': {parquet_path}. "
+                "Run download_metadata(...) first."
+            )
+
+        df = pd.read_parquet(parquet_path)
+        df["category"] = category
+        frames.append(df)
+
+    return _concat_frames(frames)
 
 
-def get_local_parquet_path(
-    category: str,
-    output_dir: Path,
-    data_type: DataType,
-) -> Path:
+def get_review_jsonl_path(category: str) -> str:
     """
-    Build the local Parquet path for a category and data type.
+    Build remote Hugging Face path for a review category JSONL file.
     """
-    filename = f"{category}.parquet"
-
-    if data_type == DataType.METADATA:
-        filename = f"meta_{filename}"
-
-    return output_dir / data_type.value / filename
+    validate_categories([category])
+    return f"{HF_DATASET_BASE_PATH}/raw/review_categories/{category}.jsonl"
 
 
-def validate_categories(categories: Sequence[str]) -> None:
+def get_metadata_jsonl_path(category: str) -> str:
     """
-    Validate that all requested categories exist in Amazon Reviews 2023.
+    Build remote Hugging Face path for a metadata category JSONL file.
+    """
+    validate_categories([category])
+    return f"{HF_DATASET_BASE_PATH}/raw/meta_categories/meta_{category}.jsonl"
+
+
+def get_review_parquet_path(category: str, output_dir: str | Path) -> Path:
+    """
+    Build local Parquet path for a review category file.
+    """
+    validate_categories([category])
+    return Path(output_dir) / f"{category}.parquet"
+
+
+def get_metadata_parquet_path(category: str, output_dir: str | Path) -> Path:
+    """
+    Build local Parquet path for a metadata category file.
+    """
+    validate_categories([category])
+    return Path(output_dir) / f"meta_{category}.parquet"
+
+
+def validate_categories(categories: list[str]) -> None:
+    """
+    Validate Amazon Reviews 2023 category names.
     """
     if not categories:
         raise ValueError("At least one category must be provided.")
@@ -214,25 +233,11 @@ def validate_categories(categories: Sequence[str]) -> None:
         )
 
 
-def configure_logging() -> None:
-    logging.basicConfig(
-        level=logging.INFO,
-        format="%(asctime)s | %(levelname)s | %(name)s | %(message)s",
-    )
+def _concat_frames(frames: list[DataFrame]) -> DataFrame:
+    """
+    Concatenate DataFrames and handle the empty case cleanly.
+    """
+    if not frames:
+        return pd.DataFrame()
 
-
-if __name__ == "__main__":
-    configure_logging()
-
-    download_data(
-        categories=["All_Beauty"],
-        data_type=DataType.REVIEWS,
-        overwrite=False,
-    )
-
-    df = load_local_data(
-        categories=["All_Beauty"],
-        data_type=DataType.REVIEWS,
-    )
-
-    print(df.head())
+    return pd.concat(frames, ignore_index=True)
